@@ -12,7 +12,7 @@ class Publisher {
     sockaddr_in destAddr;
 
 public:
-    Publisher(const char* ip, int port) {
+    Publisher(const char* ip, int port=12346) {
         WSADATA wsaData;
         WSAStartup(MAKEWORD(2, 2), &wsaData);
         sendSocket = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);

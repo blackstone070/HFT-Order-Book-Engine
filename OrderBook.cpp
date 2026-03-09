@@ -136,7 +136,8 @@ public:
         // This sends the "Resting Liquidity" to Python even if no trade happens
         if(marketDataPub) {
             // We use SellerID=0 to signal this is a Resting Order (not a full trade)
-            marketDataPub->broadcastTrade((uint32_t)order->id, 0, (uint32_t)order->price, order->qty);
+            uint32_t sideSignal = order->is_buy ? 1 : 2;
+            marketDataPub->broadcastTrade((uint32_t)order->id, sideSignal, (uint32_t)order->price, order->qty);
         }
     }
 
